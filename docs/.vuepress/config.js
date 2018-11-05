@@ -2,7 +2,7 @@ module.exports = {
 
   // title: 'Rancho个人主页',
   // description: '记录生活，记录成长',
-  base: '/',
+  base: '/rancho/',
   locales: {
     '/': {
       lang: 'zh-CN',
