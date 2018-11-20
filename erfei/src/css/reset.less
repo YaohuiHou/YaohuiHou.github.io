@@ -1,0 +1,89 @@
+/* reset */
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+th,
+td,
+p,
+blockquote,
+pre,
+form,
+fieldset,
+legend,
+input,
+button,
+textarea,
+figure,
+figcaption,
+hr {
+  margin: 0;
+  padding: 0;
+}
+body {
+  font: 12px/1.5 'Microsoft YaHei', Arial;
+  color: #333;
+}
+select,
+input,
+button {
+  vertical-align: middle;
+  font-size: 100%;
+}
+ul,
+ol {
+  list-style: none;
+}
+fieldset,
+img {
+  border: 0;
+}
+em,
+var,
+i {
+  font-style: normal;
+}
+a:link,
+a:visited {
+  text-decoration: none;
+}
+input[type='search'],
+input[type='text'],
+input[type='tel'],
+input[type='number'],
+input[type='date'],
+button,
+select,
+textarea,
+input[type='submit'] {
+  appearance: none;
+  border-image: none;
+  border-radius: 0;
+  border: 0 none;
+  outline: none;
+  box-sizing: border-box;
+}
+input::-webkit-search-decoration,
+input::-webkit-search-cancel-button {
+  display: none;
+}
+.clearfix {
+  *zoom: 1;
+  &:after {
+    content: '.';
+    display: block;
+    visibility: hidden;
+    clear: both;
+    height: 0;
+    font-size: 0;
+  }
+}
