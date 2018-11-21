@@ -40,7 +40,13 @@
   var changenew = document.querySelector('.changenew');
   var audio = document.querySelector('#audio');
   var audioBtn = document.querySelector('.audio-btn');
-  var form = document.querySelector('#form');
+  var searchView = document.querySelector('.search-view');
+  var inputBox = document.querySelector('#input');
+  var layer = document.querySelector('.layer');
+  var allSchollHtml = ''
+  var allScholl = []
+  var changeScholl = []
+  var allNameScholl = {}
 
   // 刷新
   changenew.addEventListener('click', function() { init() })
@@ -56,6 +62,34 @@
       audioBtn.classList.add('pause')
     }
 
+  })
+
+  // 获取焦点
+  inputBox.addEventListener('focus', function() {
+    searchView.classList.add('visible')
+  })
+
+  inputBox.addEventListener('input', function(e) {
+    if (e.target.value.trim() == '') {
+      changeScholl = []
+      searchView.innerHTML = allSchollHtml
+    } else {
+      changeOption(e.target.value)
+    }
+  })
+
+  // 选择学校
+  searchView.addEventListener('click', function(e) {
+    var target = e.target;
+    if (target.tagName == 'SPAN') {
+      inputBox.value = target.innerHTML
+    }
+    searchView.classList.remove('visible')
+  })
+
+  // 关闭弹窗
+  layer.addEventListener('click', function() {
+    searchView.classList.remove('visible')
   })
 
 
@@ -92,17 +126,76 @@
   // 获取所有学校
   function getAllScholl() {
     $.ajax({
-      url: form.action,
+      url: 'https://yaohuihou.github.io/erfei/school.json',
       async: false,
       success: function(res) {
-        console.log(res)
+        allScholl = res
+        res.forEach(function(item, i) {
+          allSchollHtml += '<span data-id=' + item.id + '>' + item.name + '</span>'
+          var o = {
+            index: i,
+            name: item.name,
+            id: item.id
+          }
+          if (!allNameScholl[item.add]) {
+            allNameScholl[item.add] = []
+          }
+          allNameScholl[item.add].push(o)
+        })
+        searchView.innerHTML = allSchollHtml
       }
     })
   }
 
-  // window.onload = function() {
-  //   // 请求数据
-  //   getAllScholl()
-  // }
+  // 筛选学校
+  function changeOption(val) {
+    // 城市
+    var arr = []
+    if (allNameScholl[val]) {
+      allNameScholl[val].forEach(function(item) {
+        arr.push(allScholl[item.index])
+      })
+      changeOption.length = val.length
+    } else {
+      // 全部筛取
+      if (changeScholl.length > 0 && changeOption.length && val.length > changeOption.length) {
+        // 在之前基础上筛选
+        changeScholl.forEach(function(item) {
+          if (item.name.indexOf(val) != -1) {
+            arr.push(item)
+          }
+        })
+      } else {
+        allScholl.forEach(function(item) {
+          if (item.name.indexOf(val) != -1) {
+            arr.push(item)
+          }
+        })
+      }
+    }
+
+    schollHtml(arr)
+
+  }
+
+  // 渲染
+  function schollHtml(arr) {
+    changeScholl = arr
+      // 插入数据
+    var _html = ''
+    changeScholl.forEach(function(item, i) {
+      if (item) {
+        _html += '<span data-id=' + item.id + '>' + item.name + '</span>'
+      } else {
+        _html = '<div>没有找到你想要</div>'
+      }
+    })
+    searchView.innerHTML = _html
+  }
+
+  window.onload = function() {
+    // 请求数据
+    getAllScholl()
+  }
 
 })()
