@@ -40,6 +40,7 @@
   var changenew = document.querySelector('.changenew');
   var audio = document.querySelector('#audio');
   var audioBtn = document.querySelector('.audio-btn');
+  var form = document.querySelector('#form');
 
   // 刷新
   changenew.addEventListener('click', function() { init() })
@@ -62,7 +63,7 @@
   init()
 
   function init() {
-    document.querySelector('body').style.cssText = 'background-image: url(../img/' + backImgArr[backImgArr.length - 1] + '.jpg);'
+    document.querySelector('body').style.cssText = 'background-image: url(../img/e' + backImgArr[backImgArr.length - 1] + '.jpg);'
     document.querySelector('#remarks').innerHTML = remarks[changeBackImage(remarks.length, 0)]
 
     backImgArr.push(changeBackImage(26, 1))
@@ -78,7 +79,7 @@
   // 加载图片
   function loadImgs(i) {
     var img = new window.Image()
-    img.src = '../img/' + i + '.jpg'
+    img.src = '../img/e' + i + '.jpg'
   }
 
   // 跟换背景图
@@ -87,5 +88,21 @@
     var i = c ? Math.ceil(random) : Math.floor(random)
     return i
   }
+
+  // 获取所有学校
+  function getAllScholl() {
+    $.ajax({
+      url: form.action,
+      async: false,
+      success: function(res) {
+        console.log(res)
+      }
+    })
+  }
+
+  // window.onload = function() {
+  //   // 请求数据
+  //   getAllScholl()
+  // }
 
 })()
