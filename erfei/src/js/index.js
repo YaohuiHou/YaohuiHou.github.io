@@ -35,7 +35,8 @@
   ]
 
   // 图片
-  var backImgArr = [changeBackImage(26, 1)]
+  // var backImgArr = [changeBackImage(26, 1)]
+  var loadingView = document.querySelector('#loading');
   var Body = document.querySelector('body');
   var remarksH1 = document.querySelector('#remarks');
   var changenew = document.querySelector('.changenew');
@@ -115,11 +116,10 @@
 
 
   function init() {
-    Body.style.cssText = 'background-image: url(../img/e' + backImgArr[backImgArr.length - 1] + '.jpg);'
+    Body.style.cssText = 'background-image: url(../img/e' + changeBackImage(26, 1) + '.jpg);'
     remarksH1.innerHTML = remarks[changeBackImage(remarks.length, 0)]
 
-    backImgArr.push(changeBackImage(26, 1))
-    loadImgs(backImgArr[backImgArr.length - 1])
+    // backImgArr.push(changeBackImage(26, 1))
     if (!init.play) {
       init.play = true
       audio.src = audioArr[changeBackImage(audioArr.length, 0)]
@@ -128,8 +128,14 @@
   }
 
   // 加载图片
-  function loadImgs(i) {
+  function loadImgs(i, n) {
     var img = new window.Image()
+    img.onload = img.onerror = function() {
+      loadImgs.loadedCount++
+        if (loadImgs.loadedCount == n) {
+          loadingView.classList.remove('visible')
+        }
+    }
     img.src = '../img/e' + i + '.jpg'
   }
 
@@ -160,6 +166,9 @@
           allNameScholl[item.add].push(o)
         })
         searchView.innerHTML = allSchollHtml
+      },
+      error: function(err) {
+        console.log(err)
       }
     })
   }
@@ -211,6 +220,11 @@
   }
 
   window.onload = function() {
+    // 加载图片
+    loadImgs.loadedCount = 0
+    for (var i = 0; i <= 26; i++) {
+      loadImgs(i, 26)
+    }
     // 初始化
     init()
       // 请求数据
