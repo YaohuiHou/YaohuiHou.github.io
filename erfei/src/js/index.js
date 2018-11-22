@@ -132,9 +132,10 @@
     var img = new window.Image()
     img.onload = img.onerror = function() {
       loadImgs.loadedCount++
-        if (loadImgs.loadedCount == n) {
-          loadingView.classList.remove('visible')
-        }
+        loadingView.querySelector('em').style.cssText = "height:" + 2.7 * loadImgs.loadedCount + "px"
+      if (loadImgs.loadedCount == n) {
+        loadingView.classList.remove('visible')
+      }
     }
     img.src = '../img/e' + i + '.jpg'
   }
@@ -222,7 +223,7 @@
   window.onload = function() {
     // 加载图片
     loadImgs.loadedCount = 0
-    for (var i = 0; i <= 26; i++) {
+    for (var i = 1; i <= 26; i++) {
       loadImgs(i, 26)
     }
     // 初始化
