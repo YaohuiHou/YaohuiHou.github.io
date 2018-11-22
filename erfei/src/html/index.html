@@ -13,12 +13,16 @@
   <audio id="audio" src="https://fes.qyerstatic.com/lv1kGDghJppp8cc4g8iP7PjAPq8E" autoplay loop></audio>
   <h1 class="remarks" id="remarks"></h1>
   <div class="operation">
+    <span class="search">搜</span>
     <span class="audio-btn">播</span>
     <span class="changenew">刷</span>
   </div>
-  <form action="../../school.json" class="form" id="form">
-    <input type="text" id="input" placeholder="输入关键字搜索你的学校">
-    <button>搜</button>
+  <form action="./scroll.html" class="form" id="form">
+    <div class="search-form">
+      <input type="text" name="name" id="input" placeholder="输入关键字搜索你的学校">
+      <input type="hidden" name="id" id="school_id">
+      <button>搜</button>
+    </div>
     <div class="search-view">
     </div>
     <i class="layer"></i>
@@ -31,7 +35,6 @@
   </ul>
 </body>
 <script src="https://yaohuihou.github.io/erfei/t.min.js"></script>
-<!-- <script src="https://s.kcimg.cn/public/jquery.min.js"></script> -->
 <script src="../js/index.js"></script>
 
 </html>

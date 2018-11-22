@@ -36,12 +36,15 @@
 
   // 图片
   var backImgArr = [changeBackImage(26, 1)]
-
+  var Body = document.querySelector('body');
+  var remarksH1 = document.querySelector('#remarks');
   var changenew = document.querySelector('.changenew');
   var audio = document.querySelector('#audio');
   var audioBtn = document.querySelector('.audio-btn');
+  var searchBtn = document.querySelector('.search');
   var searchView = document.querySelector('.search-view');
   var inputBox = document.querySelector('#input');
+  var schoolId = document.querySelector('#school_id');
   var layer = document.querySelector('.layer');
   var allSchollHtml = ''
   var allScholl = []
@@ -52,21 +55,25 @@
   changenew.addEventListener('click', function() { init() })
     // 音乐播放
   audioBtn.addEventListener('click', function() {
-    if (audioBtn.classList.contains('pause')) {
-      audio.play()
-      audioBtn.innerHTML = '播'
-      audioBtn.classList.remove('pause')
-    } else {
-      audio.pause()
-      audioBtn.innerHTML = '禁'
-      audioBtn.classList.add('pause')
-    }
-
+      if (audioBtn.classList.contains('pause')) {
+        audio.play()
+        audioBtn.innerHTML = '播'
+        audioBtn.classList.remove('pause')
+      } else {
+        audio.pause()
+        audioBtn.innerHTML = '禁'
+        audioBtn.classList.add('pause')
+      }
+    })
+    // m 搜索
+  searchBtn.addEventListener('click', function() {
+    form.classList.add('visible')
   })
 
   // 获取焦点
   inputBox.addEventListener('focus', function() {
     searchView.classList.add('visible')
+    layer.classList.add('visible')
   })
 
   inputBox.addEventListener('input', function(e) {
@@ -74,7 +81,10 @@
       changeScholl = []
       searchView.innerHTML = allSchollHtml
     } else {
-      changeOption(e.target.value)
+      clearTimeout(inputBox.time);
+      setTimeout(function() {
+        changeOption(e.target.value)
+      }, 500);
     }
   })
 
@@ -83,26 +93,33 @@
     var target = e.target;
     if (target.tagName == 'SPAN') {
       inputBox.value = target.innerHTML
+      schoolId.value = target.dataset['id']
     }
     searchView.classList.remove('visible')
+    layer.classList.remove('visible')
   })
 
   // 关闭弹窗
   layer.addEventListener('click', function() {
     searchView.classList.remove('visible')
+    layer.classList.remove('visible')
+    form.classList.contains('visible') && form.classList.remove('visible')
+  })
+
+  // 提交学校
+  form.addEventListener('submit', function(e) {
+    e.preventDefault()
+    console.log(form.data);
+
   })
 
 
-  // 初始化
-  init()
-
   function init() {
-    document.querySelector('body').style.cssText = 'background-image: url(../img/e' + backImgArr[backImgArr.length - 1] + '.jpg);'
-    document.querySelector('#remarks').innerHTML = remarks[changeBackImage(remarks.length, 0)]
+    Body.style.cssText = 'background-image: url(../img/e' + backImgArr[backImgArr.length - 1] + '.jpg);'
+    remarksH1.innerHTML = remarks[changeBackImage(remarks.length, 0)]
 
     backImgArr.push(changeBackImage(26, 1))
     loadImgs(backImgArr[backImgArr.length - 1])
-
     if (!init.play) {
       init.play = true
       audio.src = audioArr[changeBackImage(audioArr.length, 0)]
@@ -116,7 +133,7 @@
     img.src = '../img/e' + i + '.jpg'
   }
 
-  // 跟换背景图
+  // 随机数
   function changeBackImage(num, c) {
     var random = Math.random() * num
     var i = c ? Math.ceil(random) : Math.floor(random)
@@ -194,7 +211,9 @@
   }
 
   window.onload = function() {
-    // 请求数据
+    // 初始化
+    init()
+      // 请求数据
     getAllScholl()
   }
 
