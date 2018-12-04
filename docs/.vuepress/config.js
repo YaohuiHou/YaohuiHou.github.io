@@ -27,7 +27,7 @@ module.exports = {
     //导航栏
     nav: [
       { text: 'Home', link: '/' },
-      { text: '技术博客', link: '/technical/' },
+      { text: '技术笔记', link: '/technical/' },
       {
         text: '个人文章',
         items: [
@@ -39,9 +39,9 @@ module.exports = {
     // sidebar: 'auto',
     sidebar: {
       '/technical/': [
-        'a',
-        'b',
-        'c',
+        'string',
+        'array',
+        'object',
       ],
     },
     //搜索

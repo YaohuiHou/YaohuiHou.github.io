@@ -8,8 +8,6 @@ meta:
     content: super duper SEO
 ---
 
-<<< ./test.js{highlightLines}
-
 [[toc]]
 
 :tada: :100:
