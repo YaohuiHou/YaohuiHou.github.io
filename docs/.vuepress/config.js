@@ -6,13 +6,19 @@ module.exports = {
   locales: {
     '/': {
       lang: 'zh-CN',
-      title: 'Rancho个人主页',
-      description: '记录生活，记录成长'
+      title: 'Rancho',
+      description: '记录生活，记录成长。'
     }
   },
   head: [
-    ['link', { rel: 'icon', href: '/img/favicon.ico' }],
-    ['link', { rel: 'manifest', href: '/manifest.json' }],
+    ['link', {
+      rel: 'icon',
+      href: '/img/favicon.ico'
+    }],
+    ['link', {
+      rel: 'manifest',
+      href: '/manifest.json'
+    }],
   ],
   //mac下port未生效
   port: 8080,
@@ -25,20 +31,46 @@ module.exports = {
     //gitc 仓库地址
     repo: 'https://github.com/YaohuiHou/YaohuiHou.github.io',
     //导航栏
-    nav: [
-      { text: 'Home', link: '/' },
-      { text: '技术笔记', link: '/technical/' },
+    nav: [{
+        text: 'Home',
+        link: '/'
+      },
+      {
+        text: '技术笔记',
+        items: [{
+            text: 'Html+CSS',
+            link: '/Html+CSS/'
+          },
+          {
+            text: 'JavaScript',
+            link: '/JavaScript/'
+          },
+          {
+            text: 'Node',
+            link: '/Node/'
+          },
+          {
+            text: 'SQL',
+            link: '/SQL/'
+          },
+        ]
+      },
       {
         text: '个人文章',
-        items: [
-          { text: '情感专访', link: '/article/test1/' },
-          { text: '星座占卜', link: '/article/test2/' },
+        items: [{
+            text: '情感专访',
+            link: '/article/test1/'
+          },
+          {
+            text: '星座占卜',
+            link: '/article/test2/'
+          },
         ]
       },
     ],
     // sidebar: 'auto',
     sidebar: {
-      '/technical/': [
+      '/JavaScript/': [
         'string',
         'array',
         'object',
