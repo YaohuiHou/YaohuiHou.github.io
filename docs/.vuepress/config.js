@@ -53,6 +53,10 @@ module.exports = {
             text: 'SQL',
             link: '/SQL/'
           },
+          {
+            text: 'Python',
+            link: '/Python/'
+          },
         ]
       },
       {
@@ -75,6 +79,9 @@ module.exports = {
         'array',
         'object',
       ],
+      '/Python/': [
+        '函数'
+      ]
     },
     //搜索
     search: true,
