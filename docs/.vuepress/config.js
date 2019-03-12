@@ -6,7 +6,7 @@ module.exports = {
   locales: {
     '/': {
       lang: 'zh-CN',
-      title: 'Rancho',
+      title: 'Rancho Life',
       description: '记录生活，记录成长。'
     }
   },

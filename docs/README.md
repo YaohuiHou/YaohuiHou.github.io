@@ -1,24 +1,13 @@
 ---
-title: 这里就是标题
+title: Rancho个人笔记📒
 lang: cn-ZH
 meta:
   - name: description
-    content: hello
+    content: 前端技术，JavaScript | CSS | HTML | Python | MySQL
   - name: keywords
-    content: super duper SEO
+    content: 前端技术，JavaScript | CSS | HTML | Python | MySQL
+home: true
+footer: MIT Licensed | Copyright © 2019-present Rancho
 ---
 
-[[toc]]
-
-:tada: :100:
-
-```js
-{
-  w:a,
-  c:123
-}
-```
-
-::: tip
-This is a tip
-:::
+<HomeLaye/>
