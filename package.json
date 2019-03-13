@@ -14,5 +14,8 @@
     "element-ui": "^2.4.0",
     "less": "^3.9.0",
     "less-loader": "^4.1.0"
+  },
+  "devDependencies": {
+    "@vuepress/plugin-google-analytics": "^1.0.0-alpha.0"
   }
 }

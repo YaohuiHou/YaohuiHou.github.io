@@ -76,98 +76,113 @@ export default {
       ]
     };
   },
-  mounted() {},
+  mounted() {
+    // this.gatag();
+    document.querySelector(".home").classList.add("home-view-one");
+  },
   methods: {
-    openPage(url) {}
+    // ga统计
+    gatag() {
+      var script = document.createElement("script"); //1、创建元素
+      script.src = "https://www.googletagmanager.com/gtag/js?id=UA-136059685-1";
+      var body = document.querySelector("body"); //2、找到父级元素
+      body.appendChild(script);
+      setTimeout(() => {
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {
+          dataLayer.push(arguments);
+        }
+        gtag("js", new Date());
+        gtag("config", "UA-136059685-1");
+      }, 300);
+    }
   }
 };
 </script>
 <style lang="less">
-* {
-  padding: 0;
-  margin: 0;
-}
-.home {
-  max-width: 100%;
-  padding: 0;
-  .hero {
-    padding-top: 80px;
+.home-view-one {
+  &.home {
+    max-width: 100%;
+    padding: 0;
+    .hero {
+      padding-top: 80px;
+    }
   }
-}
-.content:not(.custom) {
-  max-width: 100%;
-  padding: 0;
-  &:first-child {
-    margin: 0;
+  .content:not(.custom) {
+    max-width: 100%;
+    padding: 0;
+    &:first-child {
+      margin: 0;
+    }
   }
-}
-.main {
-  width: 100%;
-  height: calc(~"100vh - 60px");
-  position: relative;
-  background: url("../public/img/bg.jpg") no-repeat 54.5% 0%;
-  background-attachment: fixed;
-  .box-card {
-    width: 520px;
-    box-sizing: border-box;
-    text-align: center;
-    position: absolute;
-    left: 50%;
-    top: 80px;
-    transform: translate3d(-50%, 0, 0);
-  }
-  .circle-img {
-    animation: rotate 5s linear infinite;
-  }
-  .name {
-    display: block;
-    font-size: 16px;
-    font-weight: bold;
-  }
-  .main-text {
-    font-size: 18px;
-    margin-bottom: 20px;
-  }
-}
-.progress {
-  height: 100vh;
-  background: url("../public/img/bg2.jpg") no-repeat 50% 0%;
-  background-attachment: fixed;
-  box-sizing: border-box;
-  overflow: hidden;
-  position: relative;
-  &:after {
-    position: absolute;
-    left: 0;
-    top: 0;
-    content: "";
+  .main {
     width: 100%;
-    height: 100%;
-    background: rgba(255, 255, 255, 0.86);
-  }
-  h3 {
-    margin: 30px 0 30px;
-    padding: 20px 0;
-    text-align: center;
-    font-size: 26px;
+    height: calc(~"100vh - 60px");
     position: relative;
-    z-index: 1;
-  }
-  ul {
-    display: flex;
-    flex-direction: row;
-    list-style: none;
-    flex-wrap: wrap;
-    position: relative;
-    z-index: 1;
-    li {
-      width: 25%;
+    background: url("../public/img/bg.jpg") no-repeat 54.5% 0%;
+    background-attachment: fixed;
+    .box-card {
+      width: 520px;
+      box-sizing: border-box;
       text-align: center;
-      margin-bottom: 40px;
-      span {
-        display: block;
-        font-size: 16px;
-        text-shadow: 2px 2px 9px #000;
+      position: absolute;
+      left: 50%;
+      top: 80px;
+      transform: translate3d(-50%, 0, 0);
+    }
+    .circle-img {
+      animation: rotate 5s linear infinite;
+    }
+    .name {
+      display: block;
+      font-size: 16px;
+      font-weight: bold;
+    }
+    .main-text {
+      font-size: 18px;
+      margin-bottom: 20px;
+    }
+  }
+  .progress {
+    height: 100vh;
+    background: url("../public/img/bg2.jpg") no-repeat 50% 0%;
+    background-attachment: fixed;
+    box-sizing: border-box;
+    overflow: hidden;
+    position: relative;
+    &:after {
+      position: absolute;
+      left: 0;
+      top: 0;
+      content: "";
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.86);
+    }
+    h3 {
+      margin: 30px 0 30px;
+      padding: 20px 0;
+      text-align: center;
+      font-size: 26px;
+      position: relative;
+      z-index: 1;
+    }
+    ul {
+      display: flex;
+      flex-direction: row;
+      list-style: none;
+      flex-wrap: wrap;
+      position: relative;
+      z-index: 1;
+      li {
+        width: 25%;
+        text-align: center;
+        margin-bottom: 40px;
+        span {
+          display: block;
+          font-size: 16px;
+          text-shadow: 2px 2px 9px #000;
+        }
       }
     }
   }

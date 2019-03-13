@@ -14,15 +14,13 @@ module.exports = {
     ['link', {
       rel: 'icon',
       href: '/img/favicon.ico'
-    }],
-    ['link', {
-      rel: 'manifest',
-      href: '/manifest.json'
-    }],
+    }]
   ],
   //mac下port未生效
   port: 8080,
   serviceWorker: true,
+  ga: 'UA-136059685-1', //你的Google Analytics ID
+  // ga: 'UA-136059685-1',
   markdown: {
     lineNumbers: true
   },
