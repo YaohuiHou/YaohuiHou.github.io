@@ -1,3 +1,7 @@
+---
+sidebar: auto
+---
+
 # SQL 语句
 
 ## SELECT

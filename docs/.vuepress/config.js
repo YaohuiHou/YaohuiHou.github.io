@@ -19,7 +19,14 @@ module.exports = {
   //mac下port未生效
   port: 8080,
   serviceWorker: true,
-  ga: 'UA-136059685-1', //你的Google Analytics ID
+  plugins: [
+    // ['@vuepress/plugin-google-analytics', {
+    //   ga: 'UA-136059685-1'
+    // }],
+    ['@vuepress/google-analytics', {
+      ga: 'UA-136059685-1'
+    }],
+  ],
   // ga: 'UA-136059685-1',
   markdown: {
     lineNumbers: true
@@ -34,7 +41,7 @@ module.exports = {
         link: '/'
       },
       {
-        text: '技术笔记',
+        text: '技术文档',
         items: [{
             text: 'Html+CSS',
             link: '/Html+CSS/'
@@ -58,19 +65,15 @@ module.exports = {
         ]
       },
       {
-        text: '个人文章',
-        items: [{
-            text: '情感专访',
-            link: '/article/test1/'
-          },
-          {
-            text: '星座占卜',
-            link: '/article/test2/'
-          },
-        ]
+        text: '记录',
+        link: '/notes/'
       },
+      {
+        text: '工具',
+        link: '/tool/'
+      }
     ],
-    // sidebar: 'auto',
+    sidebar: 'auto',
     sidebar: {
       '/JavaScript/': [
         'string',
@@ -78,7 +81,12 @@ module.exports = {
         'object',
       ],
       '/Python/': [
-        '函数'
+        '基础语法',
+        '数据类型',
+        '函数',
+      ],
+      '/notes/': [
+        '组件'
       ]
     },
     //搜索

@@ -77,7 +77,7 @@ export default {
     };
   },
   mounted() {
-    // this.gatag();
+    this.gatag();
     document.querySelector(".home").classList.add("home-view-one");
   },
   methods: {

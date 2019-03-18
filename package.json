@@ -11,7 +11,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "echarts": "^4.1.0",
     "element-ui": "^2.4.0",
+    "exif-js": "^2.3.0",
     "less": "^3.9.0",
     "less-loader": "^4.1.0"
   },
