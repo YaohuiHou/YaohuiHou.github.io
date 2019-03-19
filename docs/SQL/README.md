@@ -81,3 +81,8 @@ select \_ FROM order where FirstName=‘Bush’ OR LastName=‘Carter’
 9、DELETE 删除语句
 
 DELETE FROM order WHERE
+
+<!-- 评论 -->
+<ClientOnly>
+  <livere/>
+</ClientOnly>

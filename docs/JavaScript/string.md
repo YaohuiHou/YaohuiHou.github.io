@@ -314,3 +314,8 @@ let obj = { x: 1, y: 2 }
 ;`${obj.x + obj.y}`
 // "3"
 ```
+
+<!-- 评论 -->
+<ClientOnly>
+  <livere/>
+</ClientOnly>

@@ -386,3 +386,8 @@ numbers.map(function(n) {
 console.log(number)
 // [4, 9, 16, 25]
 ```
+
+<!-- 评论 -->
+<ClientOnly>
+  <livere/>
+</ClientOnly>
