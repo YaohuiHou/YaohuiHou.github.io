@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="home-laye">
     <div class="main">
       <el-card class="box-card">
         <img class="circle-img" src="../public/img/monkeyed.png">
@@ -19,6 +19,7 @@
         </li>
       </ul>
     </div>
+    <canvas id="mycanvas" :width="canvasWidth" :height="canvasHeight"></canvas>
   </div>
 </template>
 <script>
@@ -31,6 +32,8 @@ Vue.use(ElementUI);
 export default {
   data() {
     return {
+      canvasWidth: "",
+      canvasHeight: "",
       tabs: ["年轻有为", "前端开发", "男神", "善良亲和爱你们", "推动人类进步"],
       skillList: [
         {
@@ -79,6 +82,8 @@ export default {
   mounted() {
     this.gatag();
     document.querySelector(".home").classList.add("home-view-one");
+
+    this.globule();
   },
   methods: {
     // ga统计
@@ -95,6 +100,72 @@ export default {
         gtag("js", new Date());
         gtag("config", "UA-136059685-1");
       }, 300);
+    },
+    globule() {
+      this.canvasWidth = window.innerWidth;
+      this.canvasHeight = window.innerHeight;
+      var mycanvas = document.getElementById("mycanvas");
+
+      var ctx = mycanvas.getContext("2d");
+      //圆形类
+      function Circle(x, y, r, color) {
+        this.x = x;
+        this.y = y;
+        this.r = r;
+        // 颜色的取值范围
+        this.color =
+          "rgb(" +
+          parseInt(Math.random() * 255) +
+          "," +
+          parseInt(Math.random() * 255) +
+          "," +
+          parseInt(Math.random() * 255) +
+          ")";
+        //随机方向
+        this.dx = Math.random() * 12 - 7;
+        this.dy = Math.random() * 12 - 7;
+        //往数组中push自己
+        circleArr.push(this);
+      }
+      //渲染
+      Circle.prototype.render = function() {
+        //新建一条路径
+        ctx.beginPath();
+        //创建一个圆
+        ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2, true);
+        //设置样式颜色
+        ctx.fillStyle = this.color;
+        //通过填充路径的内容区域生成实心的图形
+        ctx.fill();
+      };
+      //更新
+      Circle.prototype.update = function() {
+        this.x += this.dx / 2;
+        this.y += this.dy / 2;
+        this.r--;
+        if (this.r < 0) {
+          for (var i = 0; i < circleArr.length; i++) {
+            if (circleArr[i] === this) {
+              circleArr.splice(i, 1);
+            }
+          }
+          return false;
+        }
+        return true;
+      };
+      //创建一个数组
+      var circleArr = [];
+      //鼠标移动事件
+      mycanvas.onmousemove = function(event) {
+        new Circle(event.clientX, event.clientY, 10, "orange");
+      };
+      //设置定时器每20毫秒更新和渲染
+      setInterval(function() {
+        ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
+        for (var i = 0; i < circleArr.length; i++) {
+          circleArr[i].update() && circleArr[i].render();
+        }
+      }, 50);
     }
   }
 };
@@ -121,6 +192,8 @@ export default {
     position: relative;
     background: url("../public/img/bg.jpg") no-repeat 54.5% 0%;
     background-attachment: fixed;
+    position: relative;
+    z-index: 1;
     .box-card {
       width: 520px;
       box-sizing: border-box;
@@ -150,6 +223,7 @@ export default {
     box-sizing: border-box;
     overflow: hidden;
     position: relative;
+    z-index: 1;
     &:after {
       position: absolute;
       left: 0;
@@ -185,6 +259,16 @@ export default {
         }
       }
     }
+  }
+}
+.home-laye {
+  canvas {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
   }
 }
 

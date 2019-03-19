@@ -1,0 +1,42 @@
+<template>
+  <div>这里是评论
+    <!-- 来必力City版安装代码 -->
+    <div id="lv-container" data-id="city" data-uid="MTAyMC80MzI0OS8xOTc5NQ==">
+      <!-- <script type="text/javascript">
+        
+      </script>-->
+      <!-- <noscript>为正常使用来必力评论功能请激活JavaScript</noscript> -->
+    </div>
+    <!-- City版安装代码已完成 -->
+  </div>
+</template>
+
+<script>
+// import { LivereTower } from "https://cdn-city.livere.com/js/embed.dist.js";
+export default {
+  mounted() {
+    this.installLiveere();
+  },
+  methods: {
+    installLiveere() {
+      (function(d, s) {
+        var j,
+          e = d.getElementsByTagName(s)[0];
+
+        if (typeof LivereTower === "function") {
+          return;
+        }
+
+        j = d.createElement(s);
+        j.src = "https://cdn-city.livere.com/js/embed.dist.js";
+        j.async = true;
+
+        e.parentNode.insertBefore(j, e);
+      })(document, "script");
+    }
+  }
+};
+</script>
+
+<style>
+</style>
