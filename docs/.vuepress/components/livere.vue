@@ -1,5 +1,5 @@
 <template>
-  <div>这里是评论
+  <div>
     <!-- 来必力City版安装代码 -->
     <div id="lv-container" data-id="city" data-uid="MTAyMC80MzI0OS8xOTc5NQ==">
       <!-- <script type="text/javascript">
@@ -12,7 +12,6 @@
 </template>
 
 <script>
-// import { LivereTower } from "https://cdn-city.livere.com/js/embed.dist.js";
 export default {
   mounted() {
     this.installLiveere();
