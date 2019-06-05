@@ -20,14 +20,16 @@ module.exports = {
   port: 8080,
   serviceWorker: true,
   plugins: [
-    // ['@vuepress/plugin-google-analytics', {
-    //   ga: 'UA-136059685-1'
-    // }],
+    ['@vuepress/back-to-top', true],
+    ['@vuepress/pwa', {
+      serviceWorker: true,
+      updatePopup: true
+    }],
+    ['@vuepress/medium-zoom', true],
     ['@vuepress/google-analytics', {
       ga: 'UA-136059685-1'
     }],
   ],
-  // ga: 'UA-136059685-1',
   markdown: {
     lineNumbers: true
   },
@@ -80,6 +82,9 @@ module.exports = {
         'array',
         'object',
       ],
+      '/Html+CSS/': [
+        'CSS',
+      ],
       '/Python/': [
         '基础语法',
         '数据类型',
@@ -88,8 +93,13 @@ module.exports = {
       '/notes/': [
         '组件',
         '微信分享',
+        'js复制到剪贴板',
         'axios',
         'vue-IE',
+        'git常用命令',
+        'git遇到的问题',
+        'mac下xcrun:error',
+        'MarkDown编辑高亮',
       ]
     },
     //搜索

@@ -16,11 +16,24 @@ sidebar: auto
 
 [SVGCanvas](http://svgkit.sourceforge.net/SVGCanvas.html)是大多数 Canvas 绘图 API 的 JavaScript 实现，它创建 SVG 图形元素而不是绘制到像素缓冲区。
 
+## CSS 动画
+
+[简单的 CSS 动画](https://cssfx.dev/)，可以直接点击复制 CSS 效果。
+
 ## Animation.css
 
 <ClientOnly>
   <animation/>
 </ClientOnly>
+
+### animation 参数详情
+
+| 值                        | 描述                                                                                                                                                                                                                                                                                                                 |
+| ------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| animation-timing-function | `linear` 动画从头到尾的速度是相同的。 <br><br> `ease` 默认。动画以低速开始，然后加快，在结束前变慢 <br><br> `ease-in` 动画以低速开始。 <br><br>`ease-out` 动画以低速结束。<br><br> `ease-in-out` 动画以低速开始和结束。<br><br> `cubic-bezier(n,n,n,n)` 在 cubic-bezier 函数中自己的值。可能的值是从 0 到 1 的数值。 |
+| animation-iteration-count | `infinite` 规定动画无限次播放 <br><br> `n` 定义动画播放次数的数值。                                                                                                                                                                                                                                                  |
+| animation-direction       | 规定是否应该轮流反向播放动画。 `alternate`                                                                                                                                                                                                                                                                           |
+| animation-fill-mode       | 属性规定当动画不播放时（当动画完成时，或当动画有一个延迟未开始播放时），要应用到元素的样式 <br><br> `forwards` 在动画结束后（由 animation-iteration-count 决定），动画将应用该属性值。 <br><br>                                                                                                                      |
 
 ## TinyPNG
 
