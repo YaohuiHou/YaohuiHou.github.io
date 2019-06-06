@@ -21,7 +21,7 @@ importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.1.0/workbox
 self.__precacheManifest = [
   {
     "url": "404.html",
-    "revision": "f03bf12fe964dcc17ac670fa65188191"
+    "revision": "7d2282b1e8ffbb4e042651613060eb7b"
   },
   {
     "url": "assets/css/0.styles.513daa6d.css",
@@ -281,7 +281,7 @@ self.__precacheManifest = [
   },
   {
     "url": "js/ga.ad.js",
-    "revision": "a7ae8c3e026bf09a05c9ee01331d311a"
+    "revision": "ff68370808901fceaeef7ac797df30b4"
   },
   {
     "url": "js/html2canvas.min.js",
